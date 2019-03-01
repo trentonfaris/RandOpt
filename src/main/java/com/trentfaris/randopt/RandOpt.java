@@ -57,7 +57,7 @@ public class RandOpt {
         for (int mutate : mutates) {
           callables.add(
               new GA(
-                      name + "_" + mate + "_" + mutate + "_",
+                      name + p + "_" + "_" + mate + "_" + mutate,
                       numClasses,
                       iterations,
                       layers,
@@ -85,7 +85,7 @@ public class RandOpt {
       for (double ce : ces) {
         callables.add(
             new SA(
-                    name + "_" + ce + "_",
+                    name + "_" + ce,
                     numClasses,
                     iterations,
                     layers,
