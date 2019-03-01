@@ -23,4 +23,9 @@ public abstract class ContinuousPeaks extends Toy {
         this.evaluationFunction = new ContinuousPeaksEvaluationFunction(T);
         this.distribution = new DiscreteUniformDistribution(ranges);
     }
+
+    @Override
+    public final Object call() {
+        return null;
+    }
 }
