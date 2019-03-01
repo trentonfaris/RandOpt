@@ -16,15 +16,15 @@ public final class Backprop extends Solver {
   private static final String OUTPUT = "Backprop";
 
   public Backprop(
-          int[] layers,
+          String name,
           int numClasses,
           int iterations,
+          int[] layers,
           String train,
           String validation,
-          String test,
-          String name)
+          String test)
       throws IOException {
-    super(numClasses, iterations, train, validation, test, OUTPUT, name);
+    super(OUTPUT, name, numClasses, iterations, train, validation, test);
 
     DataSet dataSet = new DataSet(trainInstances);
     RELU relu = new RELU();

@@ -21,10 +21,10 @@ import java.util.List;
 import java.util.concurrent.Callable;
 
 public abstract class Solver implements Callable<Object> {
-  private final int numClasses;
-  private final int iterations;
   private final String output;
   private final String name;
+  private final int numClasses;
+  private final int iterations;
 
   protected final Instance[] trainInstances;
   protected final Instance[] validationInstances;
@@ -35,30 +35,30 @@ public abstract class Solver implements Callable<Object> {
   protected Trainer trainer;
 
   public Solver(
+          String output,
+          String name,
           int numClasses,
           int iterations,
           String train,
           String validation,
-          String test,
-          String output,
-          String name)
+          String test)
       throws IOException {
-    this.numClasses = numClasses;
-    this.iterations = iterations;
     this.output = output;
     this.name = name;
-
-    this.trainInstances = Utility.getInstances(train);
-    this.validationInstances = Utility.getInstances(validation);
-    this.testInstances = Utility.getInstances(test);
+    this.numClasses = numClasses;
+    this.iterations = iterations;
 
     File file = new File(RandOpt.OUTPUT + File.separator + output);
     if (!file.exists()) {
       if (!file.mkdir()) {
         System.out.println(
-            "Solver output directory " + output + " already exists. Skipping creation.");
+                "Solver output directory " + output + " already exists. Skipping creation.");
       }
     }
+
+    this.trainInstances = Utility.getInstances(train);
+    this.validationInstances = Utility.getInstances(validation);
+    this.testInstances = Utility.getInstances(test);
   }
 
   @Override
