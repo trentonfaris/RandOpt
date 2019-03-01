@@ -24,6 +24,7 @@ public abstract class Solver implements Callable<Object> {
   private final int numClasses;
   private final int iterations;
   private final String output;
+  private final String name;
 
   protected final Instance[] trainInstances;
   protected final Instance[] validationInstances;
@@ -34,11 +35,18 @@ public abstract class Solver implements Callable<Object> {
   protected Trainer trainer;
 
   public Solver(
-      int numClasses, int iterations, String train, String validation, String test, String output)
+          int numClasses,
+          int iterations,
+          String train,
+          String validation,
+          String test,
+          String output,
+          String name)
       throws IOException {
     this.numClasses = numClasses;
     this.iterations = iterations;
     this.output = output;
+    this.name = name;
 
     this.trainInstances = Utility.getInstances(train);
     this.validationInstances = Utility.getInstances(validation);
@@ -69,6 +77,8 @@ public abstract class Solver implements Callable<Object> {
                     + File.separator
                     + output
                     + File.separator
+                        + name
+                        + "_"
                     + new Date().getTime()
                     + ".csv"));
     CSVPrinter csvPrinter =

@@ -34,6 +34,8 @@ public class RandOpt {
   private static final int satimageNumClasses = 7;
   private static final int phishingIterations = 3000;
   private static final int satimageIterations = 3000;
+  private static final String phishingName = "phishing";
+  private static final String satimageName = "satimage";
 
   public static void main(String[] args) {
     long start = System.currentTimeMillis();
@@ -55,7 +57,8 @@ public class RandOpt {
               phishingIterations,
               TRAIN_PHISHING,
               VALIDATION_PHISHING,
-              TEST_PHISHING));
+                  TEST_PHISHING,
+                  phishingName));
       callables.add(
           new Backprop(
               satimageLayers,
@@ -63,7 +66,8 @@ public class RandOpt {
               satimageIterations,
               TRAIN_SATIMAGE,
               VALIDATION_SATIMAGE,
-              TEST_SATIMAGE));
+                  TEST_SATIMAGE,
+                  satimageName));
 
       // GA
       for (int mate : mates) {
@@ -78,7 +82,8 @@ public class RandOpt {
                   phishingIterations,
                   TRAIN_PHISHING,
                   VALIDATION_PHISHING,
-                  TEST_PHISHING));
+                      TEST_PHISHING,
+                      phishingName));
           callables.add(
               new GA(
                   p,
@@ -89,7 +94,8 @@ public class RandOpt {
                   satimageIterations,
                   TRAIN_SATIMAGE,
                   VALIDATION_SATIMAGE,
-                  TEST_SATIMAGE));
+                      TEST_SATIMAGE,
+                      satimageName));
         }
       }
 
@@ -101,7 +107,8 @@ public class RandOpt {
               phishingIterations,
               TRAIN_PHISHING,
               VALIDATION_PHISHING,
-              TEST_PHISHING));
+                  TEST_PHISHING,
+                  phishingName));
       callables.add(
           new RHC(
               satimageLayers,
@@ -109,7 +116,8 @@ public class RandOpt {
               satimageIterations,
               TRAIN_SATIMAGE,
               VALIDATION_SATIMAGE,
-              TEST_SATIMAGE));
+                  TEST_SATIMAGE,
+                  satimageName));
 
       for (double ce : ces) {
         callables.add(
@@ -120,7 +128,8 @@ public class RandOpt {
                 phishingIterations,
                 TRAIN_PHISHING,
                 VALIDATION_PHISHING,
-                TEST_PHISHING));
+                    TEST_PHISHING,
+                    phishingName));
         callables.add(
             new SA(
                 ce,
@@ -129,7 +138,8 @@ public class RandOpt {
                 satimageIterations,
                 TRAIN_SATIMAGE,
                 VALIDATION_SATIMAGE,
-                TEST_SATIMAGE));
+                    TEST_SATIMAGE,
+                    satimageName));
       }
     } catch (IOException e) {
       e.printStackTrace();

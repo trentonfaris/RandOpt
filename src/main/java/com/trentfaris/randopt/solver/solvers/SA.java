@@ -14,15 +14,16 @@ public final class SA extends Solver {
   private static final String OUTPUT = "SA";
 
   public SA(
-      double ce,
-      int[] layers,
-      int numClasses,
-      int iterations,
-      String train,
-      String validation,
-      String test)
+          double ce,
+          int[] layers,
+          int numClasses,
+          int iterations,
+          String train,
+          String validation,
+          String test,
+          String name)
       throws IOException {
-    super(numClasses, iterations, train, validation, test, OUTPUT);
+    super(numClasses, iterations, train, validation, test, OUTPUT, name);
 
     DataSet dataSet = new DataSet(trainInstances);
     RELU relu = new RELU();

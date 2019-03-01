@@ -14,17 +14,18 @@ public final class GA extends Solver {
   private static final String OUTPUT = "GA";
 
   public GA(
-      int p,
-      int mate,
-      int mutate,
-      int[] layers,
-      int numClasses,
-      int iterations,
-      String train,
-      String validation,
-      String test)
+          int p,
+          int mate,
+          int mutate,
+          int[] layers,
+          int numClasses,
+          int iterations,
+          String train,
+          String validation,
+          String test,
+          String name)
       throws IOException {
-    super(numClasses, iterations, train, validation, test, OUTPUT);
+    super(numClasses, iterations, train, validation, test, OUTPUT, name);
 
     DataSet dataSet = new DataSet(trainInstances);
     RELU relu = new RELU();

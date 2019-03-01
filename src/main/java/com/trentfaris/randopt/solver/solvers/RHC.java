@@ -13,9 +13,16 @@ import java.io.IOException;
 public final class RHC extends Solver {
   private static final String OUTPUT = "RHC";
 
-  public RHC(int[] layers, int numClasses, int iterations, String train, String validation, String test)
+  public RHC(
+          int[] layers,
+          int numClasses,
+          int iterations,
+          String train,
+          String validation,
+          String test,
+          String name)
       throws IOException {
-    super(numClasses, iterations, train, validation, test, OUTPUT);
+    super(numClasses, iterations, train, validation, test, OUTPUT, name);
 
     DataSet dataSet = new DataSet(trainInstances);
     RELU relu = new RELU();
